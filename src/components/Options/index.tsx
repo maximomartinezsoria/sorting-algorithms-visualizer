@@ -1,4 +1,6 @@
 import React from 'react'
+import { buttonsInfo } from './buttonsInfo'
+import { Container, ButtonsWrapper, Button } from './styles'
 
 interface OptionsProps {
   setRange: React.Dispatch<React.SetStateAction<number>>,
@@ -11,13 +13,7 @@ export const Options: React.FC<OptionsProps> = ({ range, setRange }) => {
   }
 
   return (
-    <div>
-      <button>Bubble Sort</button>
-      <button>Insertion Sort</button>
-      <button>Selection Sort</button>
-      <button>Quick Sort</button>
-      <button>Heap Sort</button>
-      <button>Merge Sort</button>
+    <Container>
       <p>
         <label htmlFor="length">Change array length</label>
         <input
@@ -28,6 +24,12 @@ export const Options: React.FC<OptionsProps> = ({ range, setRange }) => {
           onChange={handleRangeChange}
         />
       </p>
-    </div>
+
+      <ButtonsWrapper>
+        {
+          buttonsInfo.map(({ text, onClick }, idx) => <Button key={idx} onClick={onClick}>{text}</Button>)
+        }
+      </ButtonsWrapper>
+    </Container>
   )
 }
