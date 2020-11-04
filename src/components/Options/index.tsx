@@ -1,15 +1,23 @@
 import React from 'react'
-import { buttonsInfo } from './buttonsInfo'
+import { Steps, SortFunction } from '../../types'
+import { buttons } from './buttons'
 import { Container, ButtonsWrapper, Button } from './styles'
 
-interface OptionsProps {
+export interface OptionsProps {
   setRange: React.Dispatch<React.SetStateAction<number>>,
-  range: number
+  range: number,
+  array: number[],
+  setSteps: React.Dispatch<React.SetStateAction<Steps | undefined>>,
 }
 
-export const Options: React.FC<OptionsProps> = ({ range, setRange }) => {
+export const Options: React.FC<OptionsProps> = ({ range, setRange, array, setSteps }) => {
   const handleRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setRange(+e.target.value)
+  }
+
+  const onClick = (sortFunction: SortFunction) => () => {
+    const [steps] = sortFunction(array)
+    setSteps(steps)
   }
 
   return (
@@ -19,7 +27,7 @@ export const Options: React.FC<OptionsProps> = ({ range, setRange }) => {
         <input
           type="range"
           min={1}
-          max={40}
+          max={30}
           value={range}
           onChange={handleRangeChange}
         />
@@ -27,7 +35,7 @@ export const Options: React.FC<OptionsProps> = ({ range, setRange }) => {
 
       <ButtonsWrapper>
         {
-          buttonsInfo.map(({ text, onClick }, idx) => <Button key={idx} onClick={onClick}>{text}</Button>)
+          buttons.map(({ text, sortFunction }, idx) => <Button key={idx} onClick={onClick(sortFunction)}>{text}</Button>)
         }
       </ButtonsWrapper>
     </Container>
