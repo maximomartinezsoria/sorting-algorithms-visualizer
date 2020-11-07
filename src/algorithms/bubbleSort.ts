@@ -28,11 +28,5 @@ export default function bubbleSort(originalArray: number[]): [Steps, number[]] {
     }
   }
 
-  steps.push({
-    array: [...array],
-    currentIdx: -1,
-    nextIdx: -1
-  })
-
   return [steps, array]
 }
