@@ -53,7 +53,7 @@ export const Visualizer: React.FC<VisualizerProps> = ({ array, steps, range, set
           const width = getWidth(range)
           const height = getHeight(number)
           let backgroundColor = 'aquamarine'
-          if (prevIdx === idx) backgroundColor = 'purple'
+          if (prevIdx === idx) backgroundColor = 'black'
           if (currentIdx === idx) backgroundColor = 'blue'
           if (nextIdx === idx) backgroundColor = 'red'
           if (currentIdx === -2) backgroundColor = 'violet'
