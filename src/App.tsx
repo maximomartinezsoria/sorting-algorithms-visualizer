@@ -10,6 +10,7 @@ export const App: React.FC = () => {
   const arrayLength = range * 4
   const [array, setArray] = useState(getArrayOfRandomNumbers(arrayLength))
   const [steps, setSteps] = useState<Steps>()
+  const [isSorting, setIsSorting] = useState(false)
 
   useEffect(() => {
     const arrayLength = range * 4
@@ -18,8 +19,8 @@ export const App: React.FC = () => {
 
   return (
     <Section>
-      <Visualizer array={array} range={range} steps={steps} setArray={setArray} />
-      <Options setRange={setRange} range={range} array={array} setSteps={setSteps} />
+      <Visualizer array={array} range={range} steps={steps} setArray={setArray} setIsSorting={setIsSorting} />
+      <Options setRange={setRange} range={range} array={array} setSteps={setSteps} isSorting={isSorting} setIsSorting={setIsSorting} />
     </Section>
   )
 }

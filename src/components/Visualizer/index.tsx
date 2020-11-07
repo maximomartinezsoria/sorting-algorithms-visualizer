@@ -8,9 +8,10 @@ interface VisualizerProps {
   steps: Steps | undefined,
   range: number,
   setArray: React.Dispatch<React.SetStateAction<number[]>>,
+  setIsSorting: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const Visualizer: React.FC<VisualizerProps> = ({ array, steps, range, setArray }) => {
+export const Visualizer: React.FC<VisualizerProps> = ({ array, steps, range, setArray, setIsSorting }) => {
   const [prevIdx, setPrevIdx] = useState(-1)
   const [currentIdx, setCurrentIdx] = useState(-1)
   const [nextIdx, setNextIdx] = useState(-1)
@@ -32,17 +33,20 @@ export const Visualizer: React.FC<VisualizerProps> = ({ array, steps, range, set
         if(step.nextIdx) setNextIdx(step.nextIdx)
 
         const finalStep = idx === steps.length - 1
-        if (finalStep) resetIdxs()
+        if (finalStep) {
+          resetIdxs()
+          setIsSorting(false)
+        }
       }, baseSpeed * (idx + 1))
     })
   }, [steps])
 
   useEffect(() => {
     if (currentIdx === -2) setCurrentIdx(-1)
-    if (range > 15) {
-      setBaseSpeed(50)
+    if (range > 20) {
+      setBaseSpeed(30)
     } else {
-      setBaseSpeed(100)
+      setBaseSpeed(70)
     }
   }, [range])
 
