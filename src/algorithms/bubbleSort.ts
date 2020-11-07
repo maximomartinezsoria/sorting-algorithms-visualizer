@@ -1,4 +1,5 @@
 import { Steps } from '../types'
+import { swap } from './helpers'
 
 export default function bubbleSort(originalArray: number[]): [Steps, number[]] {
   const steps: Steps = []
@@ -16,7 +17,7 @@ export default function bubbleSort(originalArray: number[]): [Steps, number[]] {
       })
 
       if (array[j] > array[j + 1]) {
-        swap(j, array)
+        swap(j, j + 1, array)
         steps.push({
           array: [...array],
           currentIdx: j,
@@ -34,10 +35,4 @@ export default function bubbleSort(originalArray: number[]): [Steps, number[]] {
   })
 
   return [steps, array]
-}
-
-function swap(j: number, array: number[]) {
-  const temp = array[j]
-  array[j] = array[j + 1]
-  array[j + 1] = temp
 }
