@@ -19,7 +19,7 @@ export default function selectionSort(originalArray: number[]): [Steps, number[]
       steps.push({
         array: [...array],
         currentIdx: smallestNumberIdx,
-        prevIdx: j
+        nextIdx: j
       })
     }
 
@@ -27,7 +27,7 @@ export default function selectionSort(originalArray: number[]): [Steps, number[]
     steps.push({
       array: [...array],
       currentIdx: smallestNumberIdx,
-      prevIdx: i
+      nextIdx: i
     })
   }
 
