@@ -1,6 +1,7 @@
 # Sorting Algorithms Visualizer
 
 An app that shows how some of the most famous sorting algorithms work.
+Check it out here: [https://sortingalgorithms-visualizer.netlify.app/](https://sortingalgorithms-visualizer.netlify.app/)
 
 ## Available Scripts
 
