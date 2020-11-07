@@ -8,12 +8,27 @@ export default function selectionSort(originalArray: number[]): [Steps, number[]
 
   for (let i = 0; i < array.length; i++) {
     smallestNumberIdx = i
+    steps.push({
+      array: [...array],
+      currentIdx: smallestNumberIdx,
+      nextIdx: -1
+    })
 
     for (let j = i; j < array.length; j ++) {
       if (array[j] < array[smallestNumberIdx]) smallestNumberIdx = j
+      steps.push({
+        array: [...array],
+        currentIdx: smallestNumberIdx,
+        prevIdx: j
+      })
     }
 
     swap(i, smallestNumberIdx, array)
+    steps.push({
+      array: [...array],
+      currentIdx: smallestNumberIdx,
+      prevIdx: i
+    })
   }
 
   return [steps, array]
