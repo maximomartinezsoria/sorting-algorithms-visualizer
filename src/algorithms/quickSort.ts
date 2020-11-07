@@ -23,13 +23,43 @@ function quickSortHelper(array: number[], steps: Steps, startIdx: number, endIdx
     left = array[leftIdx]
     right = array[rightIdx]
 
-    if (left > pivot && right < pivot) swap(leftIdx, rightIdx, array)
-    if (left <= pivot) leftIdx++
-    if (right >= pivot) rightIdx--
+    if (left > pivot && right < pivot) {
+      swap(leftIdx, rightIdx, array)
+      steps.push({
+        array: [...array],
+        currentIdx: pivotIdx,
+        prevIdx: leftIdx,
+        nextIdx: rightIdx
+      })
+    }
+    if (left <= pivot) {
+      leftIdx++
+      steps.push({
+        array: [...array],
+        currentIdx: pivotIdx,
+        prevIdx: leftIdx,
+        nextIdx: rightIdx
+      })
+    }
+    if (right >= pivot) {
+      rightIdx--
+      steps.push({
+        array: [...array],
+        currentIdx: pivotIdx,
+        prevIdx: leftIdx,
+        nextIdx: rightIdx
+      })
+    }
   }
 
   swap(rightIdx, pivotIdx, array)
-  const leftSubarrayIsSmaller = rightIdx - 1 - leftIdx < endIdx - (rightIdx + 1)
+  steps.push({
+    array: [...array],
+    currentIdx: pivotIdx,
+    prevIdx: leftIdx,
+    nextIdx: rightIdx
+  })
+  const leftSubarrayIsSmaller = rightIdx - 1 - startIdx < endIdx - (rightIdx + 1)
 
   if (leftSubarrayIsSmaller) {
     quickSortHelper(array, steps, startIdx, rightIdx - 1)
