@@ -1,6 +1,7 @@
 import bubbleSort from '../../algorithms/bubbleSort'
 import heapSort from '../../algorithms/heapSort'
 import insertionSort from '../../algorithms/insertionSort'
+import mergeSort from '../../algorithms/mergeSort'
 import quickSort from '../../algorithms/quickSort'
 import selectionSort from '../../algorithms/selectionSort'
 import { SortFunction } from '../../types'
@@ -16,5 +17,5 @@ export const buttons: ButtonsI[] = [
   { text: 'Selection Sort', sortFunction: selectionSort },
   { text: 'Quick Sort', sortFunction: quickSort },
   { text: 'Heap Sort', sortFunction: heapSort },
-  { text: 'Merge Sort', sortFunction: bubbleSort },
+  { text: 'Merge Sort', sortFunction: mergeSort },
 ]

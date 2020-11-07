@@ -6,7 +6,7 @@ import { Section } from './styles'
 import { Steps } from './types'
 
 export const App: React.FC = () => {
-  const [range, setRange] = useState(25)
+  const [range, setRange] = useState(15)
   const arrayLength = range * 4
   const [array, setArray] = useState(getArrayOfRandomNumbers(arrayLength))
   const [steps, setSteps] = useState<Steps>()
