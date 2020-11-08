@@ -1,7 +1,7 @@
 import React from 'react'
 import { Steps, SortFunction } from '../../types'
 import { buttons } from './buttons'
-import { Container, ButtonsWrapper, Button } from './styles'
+import { Container, RangeContainer, ButtonsWrapper, Button } from './styles'
 
 export interface OptionsProps {
   setRange: React.Dispatch<React.SetStateAction<number>>,
@@ -25,7 +25,7 @@ export const Options: React.FC<OptionsProps> = ({ range, setRange, array, setSte
 
   return (
     <Container>
-      <p>
+      <RangeContainer>
         <label htmlFor="length">Change array length</label>
         <input
           type="range"
@@ -35,7 +35,7 @@ export const Options: React.FC<OptionsProps> = ({ range, setRange, array, setSte
           onChange={handleRangeChange}
           disabled={isSorting}
         />
-      </p>
+      </RangeContainer>
 
       <ButtonsWrapper>
         {

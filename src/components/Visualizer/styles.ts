@@ -12,4 +12,5 @@ export const Chart = styled.div`
   height: 75vh;
   max-width: 100%;
   overflow: hidden;
+  margin-bottom: 30px;
 `
